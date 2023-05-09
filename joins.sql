@@ -1,10 +1,12 @@
 /* joins: select all the computers from the products table:
 using the products table and the categories table, return the product name and the category name */
+
 SELECT products.Name AS "Product", categories.Name	AS "Category"
 FROM products
 INNER JOIN categories ON products.CategoryID = categories.CategoryID;
  
 /* joins: find all product names, product prices, and products ratings that have a rating of 5 */
+
 SELECT products.Name AS "Product", products.Price, reviews.Rating
 FROM products
 INNER JOIN reviews ON products.ProductID = reviews.ProductID
@@ -24,6 +26,7 @@ order by sum_column DESC
 LIMIT 1;
 
 /* joins: find the name of the department, and the name of the category for Appliances and Games */
+
 SELECT categories.Name AS "Category Name", departments.Name AS "Department Name"
 FROM departments
 INNER JOIN categories ON departments.DepartmentID = categories.DepartmentID
@@ -39,9 +42,10 @@ OR categories.NAME = "Appliances";
  GROUP BY products.Name;
 
 /* joins: find Product name, reviewer name, rating, and comment on the Visio TV. (only return for the lowest rating!) */
+
 SELECT *
 FROM(
-	SELECT products.Name, reviews.Reviewer, reviews.Rating, reviews.Comment
+    SELECT products.Name, reviews.Reviewer, reviews.Rating, reviews.Comment
     FROM products
     INNER JOIN reviews ON products.ProductID = reviews.ProductID
     ) AS SubQuery

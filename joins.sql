@@ -54,3 +54,12 @@ This query should return:
 -  the employee's first and last name
 -  the name of each product
 -  and how many of that product they sold */
+
+SELECT employees.EmployeeID, LastName, FirstName, Name AS "Product Name", Quantity AS "# Products Sold" 
+FROM(
+	SELECT employees.EmployeeID, employees.FirstName, employees.LastName
+	FROM employees
+) AS employees
+INNER JOIN sales ON employees.EmployeeID = sales.EmployeeID
+INNER JOIN products ON sales.ProductID = products.ProductID
+ORDER BY LastName;
